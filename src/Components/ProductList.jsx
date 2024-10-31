@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addItemToCart } from './CartSlice';
 import './ProductList.css';     // Import CSS file for component-specific styles
@@ -6,7 +6,7 @@ import './ProductList.css';     // Import CSS file for component-specific styles
 const ProductList = () => {
 
     const dispatch = useDispatch();
-    const [disabledProducts, setDisabledProducts] = useSate([]);      // State to store disabled products
+    const [disabledProducts, setDisabledProducts] = useState([]);      // State to store disabled products
 
     const products = [
         { id: 1, name: 'Product A', price: 60 },
@@ -27,9 +27,9 @@ const ProductList = () => {
                     <li key={product.id} className="product-list-item">
                     <span>{product.name} - ${product.price}</span>
                     <button
-                        className={`add-to-cart-btn ${disabledProducts.inclues(product.id) ? 'disabled' : ''}`}
+                        className={`add-to-cart-btn ${disabledProducts.includes(product.id) ? 'disabled' : ''}`}
                         onClick={() => handleAddToCart(product)}
-                        disabled={disabledProducts.inclues(product.id)}     // Disable button if product is in dsiabledProducts
+                        disabled={disabledProducts.includes(product.id)}     // Disable button if product is in dsiabledProducts
                     >
                         Add to Cart
                     </button>

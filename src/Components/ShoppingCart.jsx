@@ -5,16 +5,16 @@ import './ShoppingCart.css';    // Import CSS file for component-specific styles
 
 const ShoppingCart = () => {
 
-    const didspatch = useDispatch();
+    const dispatch = useDispatch();
     const cartItems = useSelector(state => state.cart.cartItems);
     const totalAmount = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
     const handleRemoveItem = itemId => {
-        dispatchEvent(removeItemFromCart(itemId))
+        dispatch(removeItemFromCart(itemId))
     };
 
     const handleClearCart = () => {
-        dispatchEvent(clearCart());
+        dispatch(clearCart());
     };
 
     const handleIncreaseQuantity = itemId => {
